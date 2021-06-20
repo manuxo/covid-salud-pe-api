@@ -54,6 +54,8 @@ export class User extends AuditableEntity {
     })
     oneTimePassword: string;
 
-    @OneToOne(() => Patient, item => item.user)
+    @OneToOne(() => Patient, item => item.user, {
+        cascade: true
+    })
     patient: Patient;
 }

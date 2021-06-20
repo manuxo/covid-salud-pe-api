@@ -80,7 +80,7 @@ export class Patient extends AuditableEntity {
         name: 'date_of_birth',
         type: 'date'
     })
-    dateOfBirth: Date;
+    dateOfBirth: string;
 
     @Column({
         type: 'tinyint'

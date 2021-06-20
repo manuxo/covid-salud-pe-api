@@ -1,9 +1,11 @@
+import "reflect-metadata";
 import * as dotenv from "dotenv";
 import express from 'express';
 import morgan = require('morgan');
 import cors = require('cors');
 import { errorHandler } from "./lib/middlewares/error-handler";
 import DepartmentRouter from "./routes/departments/DepartmentRouter";
+import UserRouter from "./routes/users/UserRouter";
 
 const result = dotenv.config()
 console.log('dotenv - Leyendo variables de entorno...');
@@ -22,6 +24,7 @@ app.use(cors());
 app.use(morgan('tiny'));
 
 app.use('/departments', DepartmentRouter);
+app.use('/users', UserRouter);
 
 app.use(errorHandler);
 

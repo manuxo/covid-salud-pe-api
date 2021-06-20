@@ -17,7 +17,7 @@ export class DepartmentService implements IService<number, Department, Departmen
         this.softDelete = this.softDelete.bind(this);
     }
 
-    async getAll(): Promise<[any[], number]> {
+    async getAll(): Promise<[Department[], number]> {
         try {
             const conn = await this._database.getConnection();
             const departmentRepo = conn.getCustomRepository(DepartmentRepository);

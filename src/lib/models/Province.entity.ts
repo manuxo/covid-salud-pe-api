@@ -1,3 +1,4 @@
+import { AutoMap } from "@automapper/classes";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { Department } from "./Department.entity";
 import { District } from "./District.entity";
@@ -6,7 +7,6 @@ import { District } from "./District.entity";
     name: 'provinces'
 })
 export class Province {
-
     @PrimaryColumn({
         type: 'int'
     })

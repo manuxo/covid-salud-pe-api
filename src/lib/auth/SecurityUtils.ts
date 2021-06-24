@@ -1,4 +1,4 @@
-// const jwt = require("jsonwebtoken");
+import jwt = require("jsonwebtoken");
 // const nodemailer = require('nodemailer');
 import * as bcrypt from 'bcrypt';
 import { CovidSaludConstants } from '../common/CovidSaludConstants';
@@ -23,6 +23,10 @@ export class SecurityUtils {
             throw error;
         }
     }
+
+    public static generateAccessToken(payload: any) {
+        return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' });
+    }
 }
 
 
@@ -45,9 +49,7 @@ export class SecurityUtils {
 //         })
 //     }
 // },
-    // generateAccessToken: function (payload) {
-    //     return jwt.sign({payload}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'});
-    // }
+
     // sendCode: function (email, randomCode, firstName, lastName, callback) {
     //     var transporter = nodemailer.createTransport({
     //         service: 'gmail',

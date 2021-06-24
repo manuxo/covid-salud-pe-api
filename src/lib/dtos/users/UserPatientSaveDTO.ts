@@ -1,7 +1,7 @@
 import { Type } from "class-transformer";
 import { IsBoolean, IsEmail, IsString, ValidateNested } from "class-validator";
 import { CovidSaludConstants } from "../../common/CovidSaludConstants";
-import { PatientSaveDTO } from "./PatientSaveDTO";
+import { PatientSaveDTO } from "../patients/PatientSaveDTO";
 
 export class UserPatientSaveDTO {
     @IsString({

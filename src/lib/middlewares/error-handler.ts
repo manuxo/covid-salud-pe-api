@@ -11,12 +11,12 @@ export function errorHandler(
     next: NextFunction
 ) {
     console.error(err);
-    let code: number = 500;
+    let code = 500;
     let response: any;
     /*if (err instanceof UnauthorizedError){
         code = 401;
         response = SingleResponse("invalid token", false);
-    } else*/ if (err instanceof BusinessError || err.code) {
+    } else*/ if (err instanceof BusinessError) {
         code = err.code;
         response = SingleResponse(err.message, false);
     } else if (err instanceof Array && err[0] instanceof ValidationError) {

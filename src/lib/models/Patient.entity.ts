@@ -1,5 +1,7 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Allergy } from "./Allergy.entity";
 import { AuditableEntity } from "./AuditableEntity.entity";
+import { Disease } from "./Disease.entity";
 import { District } from "./District.entity";
 import { DocType } from "./DocType.entity";
 import { User } from "./User.entity";
@@ -51,6 +53,12 @@ export class Patient extends AuditableEntity {
         referencedColumnName: 'id'
     })
     docType: DocType;
+
+    @OneToMany(() => Disease, item => item.patient)
+    diseases: Disease[];
+
+    @OneToMany(() => Disease, item => item.patient)
+    allergies: Allergy[];
 
     @Column({
         name: 'doc_number',

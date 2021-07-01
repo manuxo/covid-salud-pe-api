@@ -1,10 +1,10 @@
 import { DatabaseManager } from "../../database/DatabaseManager";
-import { Department } from "../../models/Department.entity";
-import { DepartmentRepository } from "../../repositories/DepartmentRepository";
+import { District } from "../../models/District.entity";
+import { DistrictRepository } from "../../repositories/DistrictRepository";
 import { IService } from "../IService";
 
 
-export class DepartmentService implements IService<number, Department, Department, Department> {
+export class DistrictService implements IService<number, District, District, District> {
     _database: DatabaseManager;
 
     constructor() {
@@ -17,16 +17,11 @@ export class DepartmentService implements IService<number, Department, Departmen
         this.softDelete = this.softDelete.bind(this);
     }
 
-    async getAll(): Promise<[Department[], number]> {
+    async getAll(): Promise<[District[], number]> {
         try {
             const conn = await this._database.getConnection();
-            const departmentRepo = conn.getCustomRepository(DepartmentRepository);
-            const result = await departmentRepo.findAndCount({
-                relations: [
-                    "provinces",
-                    "provinces.districts"
-                ]
-            });
+            const districtRepo = conn.getCustomRepository(DistrictRepository);
+            const result = await districtRepo.findAndCount();
             return result;
         } catch (error) {
             console.log(error);
